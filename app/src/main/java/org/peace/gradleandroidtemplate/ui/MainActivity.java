@@ -1,7 +1,8 @@
-package org.peace.gradleandroidtemplate.app;
+package org.peace.gradleandroidtemplate.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import org.peace.gradleandroidtemplate.app.R;
 
 
 public class MainActivity extends ActionBarActivity {
