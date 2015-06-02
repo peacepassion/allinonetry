@@ -7,7 +7,6 @@ import android.widget.Button;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import org.peace.gradleandroidtemplate.app.R;
 import org.peace.gradleandroidtemplate.util.LogHelper;
 
 
