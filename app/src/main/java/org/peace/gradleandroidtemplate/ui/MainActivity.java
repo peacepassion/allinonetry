@@ -1,17 +1,16 @@
 package org.peace.gradleandroidtemplate.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import org.peace.R;
 import org.peace.gradleandroidtemplate.util.LogHelper;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = LogHelper.getNativeSimpleLogTag(MainActivity.class, LogHelper.DEFAULT_LOG_TAG);
 
