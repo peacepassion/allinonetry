@@ -1,4 +1,4 @@
-package org.peace.gradleandroidtemplate.ui;
+package org.peace.allinone.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,12 +7,10 @@ import android.widget.Button;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import org.peace.gradleandroidtemplate.util.LogHelper;
+import org.peace.allinone.R;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private final String LOG_TAG = LogHelper.getNativeSimpleLogTag(MainActivity.class, LogHelper.DEFAULT_LOG_TAG);
 
     @InjectView(R.id.start_btn)
     Button mStartBtn;
