@@ -2,6 +2,7 @@ package org.peace.allinone;
 
 import android.app.Application;
 import android.content.Context;
+import com.github.mmin18.layoutcast.LayoutCast;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import me.ele.commons.AppLogger;
@@ -18,6 +19,10 @@ public class MyApp extends Application {
         super.onCreate();
         AppLogger.debug = true;
         refWatcher = LeakCanary.install(this);
+
+        if (BuildConfig.DEBUG) {
+            LayoutCast.init(this);
+        }
     }
 
     public static RefWatcher refWatcher(Context context) {
