@@ -21,8 +21,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
   static final int LAST = 3;
 
   public RVAdapter() {
-    for (int i = 0; i < 100; ++i) {
-      contents.add("Item " + i);
+  }
+
+  public void setData(List<String> data) {
+    contents.clear();
+    for (int i = 0; i < data.size(); i++) {
+      contents.add(data.get(i));
       notifyItemInserted(i);
     }
   }

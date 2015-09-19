@@ -12,8 +12,12 @@ public class RVItemAnimator extends DefaultItemAnimator {
 
 
   @Override public boolean animateAdd(final RecyclerView.ViewHolder holder) {
-    RVVH rvHolder = (RVVH) holder;
-    rvHolder.tv.animate().rotationY(40).setDuration(2000).setListener(new AnimatorListenerAdapter() {
+    final RVVH rvHolder = (RVVH) holder;
+    rvHolder.tv.animate().rotationY(180).setDuration(2000).setListener(new AnimatorListenerAdapter() {
+      @Override public void onAnimationStart(Animator animation) {
+        super.onAnimationStart(animation);
+      }
+
       @Override public void onAnimationEnd(Animator animation) {
         super.onAnimationEnd(animation);
         dispatchAddFinished(holder);

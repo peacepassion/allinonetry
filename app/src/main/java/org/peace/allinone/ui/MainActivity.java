@@ -8,6 +8,8 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import java.util.LinkedList;
+import java.util.List;
 import org.peace.allinone.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
   @OnClick({ R.id.start_btn }) public void onClick(View v) {
     int id = v.getId();
     if (id == R.id.start_btn) {
+      List<String> contents = new LinkedList<>();
+      for (int i = 0; i < 100; i++) {
+        contents.add("item " + i);
+      }
+      adapter.setData(contents);
     }
   }
 }
