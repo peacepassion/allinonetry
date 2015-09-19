@@ -12,21 +12,20 @@ import me.ele.commons.AppLogger;
  */
 public class MyApp extends Application {
 
-    private RefWatcher refWatcher;
+  private RefWatcher refWatcher;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        AppLogger.debug = true;
-        refWatcher = LeakCanary.install(this);
+  @Override public void onCreate() {
+    super.onCreate();
+    AppLogger.debug = true;
+    refWatcher = LeakCanary.install(this);
 
-        if (BuildConfig.DEBUG) {
-            LayoutCast.init(this);
-        }
+    if (BuildConfig.DEBUG) {
+      LayoutCast.init(this);
     }
+  }
 
-    public static RefWatcher refWatcher(Context context) {
-        MyApp app = (MyApp) context.getApplicationContext();
-        return app.refWatcher;
-    }
+  public static RefWatcher refWatcher(Context context) {
+    MyApp app = (MyApp) context.getApplicationContext();
+    return app.refWatcher;
+  }
 }
