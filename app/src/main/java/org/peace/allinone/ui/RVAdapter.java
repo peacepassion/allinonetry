@@ -14,7 +14,7 @@ import org.peace.allinone.R;
  */
 public class RVAdapter extends RecyclerView.Adapter<RVVH> {
 
-  List<String> contents = new LinkedList<>();
+  public List<String> contents = new LinkedList<>();
 
   static final int FIRST = 1;
   static final int NORMAL = 2;
@@ -23,6 +23,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
   public RVAdapter() {
     for (int i = 0; i < 100; ++i) {
       contents.add("Item " + i);
+      notifyItemInserted(i);
     }
   }
 
