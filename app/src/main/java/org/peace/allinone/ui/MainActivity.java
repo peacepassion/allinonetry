@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
     rv.setLayoutManager(linearLayoutManager);
     rv.setAdapter(new RVAdapter());
+    rv.addItemDecoration(new RVItemDecorator());
   }
 
   @OnClick({ R.id.start_btn }) public void onClick(View v) {

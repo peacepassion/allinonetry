@@ -16,9 +16,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
 
   List<String> contents = new LinkedList<>();
 
-  final int FIRST = 1;
-  final int NORMAL = 2;
-  final int LAST = 3;
+  static final int FIRST = 1;
+  static final int NORMAL = 2;
+  static final int LAST = 3;
 
   public RVAdapter() {
     for (int i = 0; i < 100; ++i) {
