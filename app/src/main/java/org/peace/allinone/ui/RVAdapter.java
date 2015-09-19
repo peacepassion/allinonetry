@@ -1,6 +1,7 @@
 package org.peace.allinone.ui;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
 
   List<String> contents = new LinkedList<>();
 
+  final int FIRST = 1;
+  final int NORMAL = 2;
+  final int LAST = 3;
+
   public RVAdapter() {
     for (int i = 0; i < 100; ++i) {
       contents.add("Item " + i);
@@ -22,7 +27,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
   }
 
   @Override public int getItemViewType(int position) {
-    return super.getItemViewType(position);
+    if (position == 0) {
+      return FIRST;
+    }
+    if (position == contents.size() - 1) {
+      return LAST;
+    }
+    return NORMAL;
   }
 
   @Override public void onViewRecycled(RVVH holder) {
@@ -35,8 +46,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
   }
 
   @Override public void onBindViewHolder(RVVH holder, int position) {
+    int type = getItemViewType(position);
     String content = contents.get(position);
     holder.tv.setText(content);
+    if (type == FIRST || type == LAST) {
+      holder.tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+    }
   }
 
   @Override public int getItemCount() {
