@@ -2,7 +2,7 @@ package org.peace.allinone.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.ButterKnife;
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
   @InjectView(R.id.r_v) RecyclerView rv;
 
   RVAdapter adapter = new RVAdapter();
+  GridLayoutManager manager;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -24,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     ButterKnife.inject(this);
 
-    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-    rv.setLayoutManager(linearLayoutManager);
-    rv.setItemAnimator(new RVItemAnimator());
+    manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+    manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+      @Override public int getSpanSize(int position) {
+        return (position % 3 == 0 ? 2 : 1);
+      }
+    });
+    rv.setLayoutManager(manager);
     rv.setAdapter(adapter);
-    rv.addItemDecoration(new RVItemDecorator());
   }
 
   @OnClick({ R.id.start_btn }) public void onClick(View v) {
