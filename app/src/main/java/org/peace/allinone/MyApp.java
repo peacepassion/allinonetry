@@ -5,7 +5,6 @@ import android.content.Context;
 import com.facebook.stetho.DumperPluginsProvider;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.dumpapp.DumperPlugin;
-import com.github.mmin18.layoutcast.LayoutCast;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class MyApp extends Application {
     refWatcher = LeakCanary.install(this);
 
     if (BuildConfig.DEBUG) {
-      LayoutCast.init(this);
       Stetho.initialize(Stetho.newInitializerBuilder(this)
           .enableDumpapp(new MyDumperPluginsProvider(this))
           .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
