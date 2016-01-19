@@ -37,12 +37,6 @@ android {
   buildTypes {}
 }
 
-task run(type: Exec, dependsOn: 'installDebug') {
-  commandLine 'adb', 'shell', 'am', 'start', '-n',
-      'com.linuxclub.cdcfan/com.linuxclub.cdcfan.ui.StartActivity', '-a',
-      'android.intent.action.MAIN', '-c', 'android.intent.category.LAUNCHER'
-}
-
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   compile 'com.android.support:appcompat-v7:22.0.0'
