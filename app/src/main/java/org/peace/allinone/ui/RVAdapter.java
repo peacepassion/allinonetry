@@ -27,8 +27,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVVH> {
     contents.clear();
     for (int i = 0; i < data.size(); i++) {
       contents.add(data.get(i));
-      notifyItemInserted(i);
     }
+    notifyDataSetChanged();
   }
 
   @Override public int getItemViewType(int position) {
