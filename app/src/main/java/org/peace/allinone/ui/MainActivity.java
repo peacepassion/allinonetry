@@ -54,12 +54,13 @@ public class MainActivity extends AppCompatActivity {
     GestureDetector gd = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
       @Override
       public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        if (distanceY > 0) {
-          direction = Dir.DOWN;
-        }
-        if (distanceY < 0) {
-          direction = Dir.UP;
-        }
+        //AppLogger.d("dy: " + distanceY);
+        //if (distanceY > 0) {
+        //  direction = Dir.DOWN;
+        //}
+        //if (distanceY < 0) {
+        //  direction = Dir.UP;
+        //}
         return false;
       };
     });
@@ -73,12 +74,19 @@ public class MainActivity extends AppCompatActivity {
 
     rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-        AppLogger.d("rv dy: " + dy);
+        AppLogger.d("dy: " + dy);
+        if (dy > 0) {
+          direction = Dir.DOWN;
+        } else {
+          direction = Dir.UP;
+        }
+        toggleStatusView(direction, manager.findFirstVisibleItemPosition() == 0);
       }
 
       @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-        AppLogger.w("fire toggle");
-        toggleStatusView(direction, manager.findFirstVisibleItemPosition() == 0);
+        //AppLogger.w("fire toggle");
+        //AppLogger.w("dir: " + direction);
+        //toggleStatusView(direction, manager.findFirstVisibleItemPosition() == 0);
       }
     });
   }
