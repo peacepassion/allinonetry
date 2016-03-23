@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "bundles": [
+    {
+      "uri": "mine",
+      "pkg": "net.wequick.example.small.app.mine"
+    }
+  ]
+}
