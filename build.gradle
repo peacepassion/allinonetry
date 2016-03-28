@@ -3,9 +3,13 @@
 buildscript {
   repositories {
     jcenter()
+    maven {
+      url "http://172.16.10.156:8081/nexus/content/groups/mobile"
+    }
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:1.5.0'
+    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
     classpath 'net.wequick.tools.build:gradle-small:0.3.5'
 
     // NOTE: Do not place your application dependencies here; they belong
