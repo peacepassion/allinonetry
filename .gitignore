@@ -35,6 +35,7 @@ gen/
 # Gradle files
 .gradle/
 build/
+build-small/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -44,3 +45,5 @@ proguard/
 
 # Log Files
 *.log
+
+*.so
