@@ -34,3 +34,49 @@ apply plugin: 'net.wequick.small'
 small {
   aarVersion = '0.6.0'
 }
+
+def getAllCleanTasks() {
+  def tasks = new HashSet()
+  project.subprojects.each {
+    tasks.add(it.clean)
+  }
+  tasks.add(project.cleanLib)
+  tasks.add(project.cleanBundle)
+  return tasks
+}
+
+def getBuildTasks() {
+  def tasks = new HashSet()
+  tasks.add(project.buildLib)
+  tasks.add(project.buildBundle)
+  return tasks
+}
+
+def getAssembleTask() {
+  return project.findProject(':app').assembleRelease
+}
+
+task smallBuild << {
+  def cmds = ['gradle clean', 'gradle cleanLib', 'gradle cleanBundle', 'gradle buildLib', 'gradle buildBundle', 'gradle :app:aR']
+  cmds.each {
+    def proc = it.execute()
+    proc.text.eachLine {
+      println it
+    }
+    proc.waitFor()
+  }
+}
+
+//smallBuild.dependsOn(project.buildLib)
+
+project.afterEvaluate {
+//  smallBuild.dependsOn(project.cleanLib)
+//  smallBuild.dependsOn(project.cleanBundle)
+//  project.subprojects.each {
+//    it.afterEvaluate {
+//      smallBuild.dependsOn(it.clean)
+//    }
+//  }
+//  smallBuild.dependsOn(project.buildLib)
+//  smallBuild.dependsOn(project.buildBundle)
+}
