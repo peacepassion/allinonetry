@@ -35,48 +35,71 @@ small {
   aarVersion = '0.6.0'
 }
 
-def getAllCleanTasks() {
-  def tasks = new HashSet()
+def cleans = new ArrayList()
+def buildLibs = new ArrayList()
+def buildBundles = new ArrayList()
+
+task smallBuild {
+  buildLibs.add(project.buildLib)
+  buildBundles.add(project.buildBundle)
   project.subprojects.each {
-    tasks.add(it.clean)
-  }
-  tasks.add(project.cleanLib)
-  tasks.add(project.cleanBundle)
-  return tasks
-}
-
-def getBuildTasks() {
-  def tasks = new HashSet()
-  tasks.add(project.buildLib)
-  tasks.add(project.buildBundle)
-  return tasks
-}
-
-def getAssembleTask() {
-  return project.findProject(':app').assembleRelease
-}
-
-task smallBuild << {
-  def cmds = ['gradle clean', 'gradle cleanLib', 'gradle cleanBundle', 'gradle buildLib', 'gradle buildBundle', 'gradle :app:aR']
-  cmds.each {
-    def proc = it.execute()
-    proc.text.eachLine {
-      println it
+    it.afterEvaluate {
+      if (it.hasProperty('clean')) {
+        cleans.add(it.clean)
+      }
+      if (it.hasProperty('cleanLib')) {
+        cleans.add(it.cleanLib)
+      }
+      if (it.hasProperty('cleanBundle')) {
+        cleans.add(it.cleanBundle)
+      }
+      if (it.hasProperty('buildLib')) {
+        buildLibs.add(it.buildLib)
+      }
+      if (it.hasProperty('buildBundle')) {
+        buildBundles.add(it.buildBundle)
+      }
     }
-    proc.waitFor()
   }
 }
 
-//smallBuild.dependsOn(project.buildLib)
+smallBuild.doLast {
+  println 'sb doLast'
+  println cleans
+  println buildLibs
+  println buildBundles
+  cleans.each {
+    println it.name
+    it.execute()
+  }
+  buildLibs.each {
+    println it.name
+    it.execute()
+  }
+  buildBundles.each {
+    println it.name
+    it.execute()
+  }
+}
 
-project.afterEvaluate {
-//  smallBuild.dependsOn(project.cleanLib)
-//  smallBuild.dependsOn(project.cleanBundle)
+//project.afterEvaluate {
 //  project.subprojects.each {
 //    it.afterEvaluate {
-//      smallBuild.dependsOn(it.clean)
+//      if (it.hasProperty('clean')) {
+//        smallBuild.dependsOn(it.clean)
+//      }
+//      if (it.hasProperty('cleanLib')) {
+//        smallBuild.dependsOn(it.cleanLib)
+//      }
+//      if (it.hasProperty('cleanBundle')) {
+//        smallBuild.dependsOn(it.cleanBundle)
+//      }
+//      if (it.hasProperty('buildLib')) {
+//        smallBuild.dependsOn(it.buildLib)
+//      }
+//      if (it.hasProperty('buildBundle')) {
+//        smallBuild.dependsOn(it.buildBundle)
+//      }
 //    }
 //  }
-//  smallBuild.dependsOn(project.buildLib)
-//  smallBuild.dependsOn(project.buildBundle)
-}
+//}
