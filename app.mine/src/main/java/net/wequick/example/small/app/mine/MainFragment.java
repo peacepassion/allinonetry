@@ -24,7 +24,7 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         TextView tvSection = (TextView) rootView.findViewById(R.id.section_label);
         tvSection.setText(R.string.hello);
-        //tvSection.setTextColor(getResources().getColor(R.color.abc_background_cache_hint_selector_material_dark));
+        tvSection.setTextColor(getResources().getColor(android.support.v7.appcompat.R.color.abc_background_cache_hint_selector_material_dark));
 
         Button button = (Button) rootView.findViewById(R.id.inter_start_button);
         button.setOnClickListener(new View.OnClickListener() {
