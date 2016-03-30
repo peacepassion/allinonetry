@@ -3,17 +3,10 @@
 buildscript {
   repositories {
     jcenter()
-    maven {
-      url "http://172.16.10.156:8081/nexus/content/groups/mobile"
-    }
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:1.5.0'
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
     classpath 'net.wequick.tools.build:gradle-small:0.3.5'
-
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
   }
 }
 
@@ -21,14 +14,7 @@ allprojects {
   repositories {
     jcenter()
     maven {
-      url "${server}/nexus/content/groups/mobile"
-      credentials {
-        username nexusUsername
-        password nexusPassword
-      }
-    }
-    maven {
-      url "https://jitpack.io"
+      url "https://dl.bintray.com/peacepassion/maven"
     }
   }
 }
@@ -39,71 +25,3 @@ small {
   aarVersion = '0.6.0'
 }
 
-def cleans = new ArrayList()
-def buildLibs = new ArrayList()
-def buildBundles = new ArrayList()
-
-task smallBuild {
-  buildLibs.add(project.buildLib)
-  buildBundles.add(project.buildBundle)
-  project.subprojects.each {
-    it.afterEvaluate {
-      if (it.hasProperty('clean')) {
-        cleans.add(it.clean)
-      }
-      if (it.hasProperty('cleanLib')) {
-        cleans.add(it.cleanLib)
-      }
-      if (it.hasProperty('cleanBundle')) {
-        cleans.add(it.cleanBundle)
-      }
-      if (it.hasProperty('buildLib')) {
-        buildLibs.add(it.buildLib)
-      }
-      if (it.hasProperty('buildBundle')) {
-        buildBundles.add(it.buildBundle)
-      }
-    }
-  }
-}
-
-smallBuild.doLast {
-  println 'sb doLast'
-  println cleans
-  println buildLibs
-  println buildBundles
-  cleans.each {
-    println it.name
-    it.execute()
-  }
-  buildLibs.each {
-    println it.name
-    it.execute()
-  }
-  buildBundles.each {
-    println it.name
-    it.execute()
-  }
-}
-
-//project.afterEvaluate {
-//  project.subprojects.each {
-//    it.afterEvaluate {
-//      if (it.hasProperty('clean')) {
-//        smallBuild.dependsOn(it.clean)
-//      }
-//      if (it.hasProperty('cleanLib')) {
-//        smallBuild.dependsOn(it.cleanLib)
-//      }
-//      if (it.hasProperty('cleanBundle')) {
-//        smallBuild.dependsOn(it.cleanBundle)
-//      }
-//      if (it.hasProperty('buildLib')) {
-//        smallBuild.dependsOn(it.buildLib)
-//      }
-//      if (it.hasProperty('buildBundle')) {
-//        smallBuild.dependsOn(it.buildBundle)
-//      }
-//    }
-//  }
-//}
