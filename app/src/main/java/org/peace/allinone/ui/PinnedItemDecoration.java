@@ -7,6 +7,9 @@ import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+import me.ele.commons.AppLogger;
 
 //TODO support horizontal layout
 public class PinnedItemDecoration extends RecyclerView.ItemDecoration {
@@ -20,6 +23,12 @@ public class PinnedItemDecoration extends RecyclerView.ItemDecoration {
   private SparseBooleanArray mCachedPinnedViewTypes = new SparseBooleanArray();
   private SparseArray<View> mCachedPinnedHeaders = new SparseArray<>();
   private int mPinnedHeaderTop;
+
+  private FrameLayout container;
+
+  public PinnedItemDecoration(FrameLayout container) {
+    this.container = container;
+  }
 
   @Override
   public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
@@ -47,8 +56,15 @@ public class PinnedItemDecoration extends RecyclerView.ItemDecoration {
   @Override
   public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
     if (mPinnedHeaderView != null) {
-      c.translate(0, mPinnedHeaderTop);
-      mPinnedHeaderView.draw(c);
+      container.setTranslationY(mPinnedHeaderTop);
+      if (container.getChildCount() > 0) {
+        return;
+      }
+      ViewGroup p = (ViewGroup) mPinnedHeaderView.getParent();
+      if (p != null) {
+        p.removeView(mPinnedHeaderView);
+      }
+      container.addView(mPinnedHeaderView);
     }
   }
 
@@ -112,8 +128,8 @@ public class PinnedItemDecoration extends RecyclerView.ItemDecoration {
         View.MeasureSpec.EXACTLY);
     final int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(heightSize, heightMode);
     mPinnedHeaderView.measure(widthMeasureSpec, heightMeasureSpec);
-    mPinnedHeaderView.layout(0, 0, mPinnedHeaderView.getMeasuredWidth(),
-        mPinnedHeaderView.getMeasuredHeight());
+    //mPinnedHeaderView.layout(0, 0, mPinnedHeaderView.getMeasuredWidth(),
+    //    mPinnedHeaderView.getMeasuredHeight());
   }
 
   private int findPinneViewPosition(int fromPosition) {

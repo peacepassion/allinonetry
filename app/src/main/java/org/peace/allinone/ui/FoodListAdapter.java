@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import me.ele.commons.CollectionsUtils;
@@ -45,6 +46,11 @@ public class FoodListAdapter extends RecyclerView.Adapter<RVVH>
 
   @Override public void onBindViewHolder(RVVH vh, int position) {
     Object obj = getItem(position);
+    vh.itemView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        Toast.makeText(v.getContext(), "position: " + position, Toast.LENGTH_SHORT).show();
+      }
+    });
     if (obj instanceof FoodCategory) {
       vh.bind(((FoodCategory) obj).name);
       return;

@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.FrameLayout;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import java.util.ArrayList;
 import java.util.List;
+import me.ele.commons.AppLogger;
 import org.peace.allinone.R;
 
 public class MainActivity extends AppCompatActivity {
 
   @InjectView(R.id.r_v) RecyclerView rv;
+  @InjectView(R.id.container) FrameLayout container;
 
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     FoodListAdapter adapter = new FoodListAdapter(foodCategories);
     rv.setLayoutManager(new LinearLayoutManager(this));
     rv.setAdapter(adapter);
-    rv.addItemDecoration(new PinnedItemDecoration());
+    rv.addItemDecoration(new PinnedItemDecoration(container));
   }
 
 }

@@ -15,10 +15,24 @@
       android:text="Start"
       />
 
-  <android.support.v7.widget.RecyclerView
-      android:id="@+id/r_v"
+  <FrameLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      />
+      android:layout_height="wrap_content"
+      >
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/r_v"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@android:color/holo_blue_light"
+        />
+  </FrameLayout>
 
 </LinearLayout>
