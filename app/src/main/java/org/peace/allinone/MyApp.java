@@ -9,7 +9,6 @@ import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import java.util.ArrayList;
 import me.ele.commons.AppLogger;
-import org.shikato.infodumper.InfoDumperPlugin;
 
 /**
  * Created by peacepassion on 15/8/11.
@@ -49,7 +48,6 @@ public class MyApp extends Application {
         plugins.add(defaultPlugin);
       }
       // Add InfoDumperPlugin
-      plugins.add(new InfoDumperPlugin(mContext));
       return plugins;
     }
   }
