@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
   }
 
   @OnClick(R.id.start_btn) public void onClick(View v) {
