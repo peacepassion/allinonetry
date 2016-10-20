@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     ButterKnife.bind(this);
-    emotionView.showPromotion();
+    emotionView.showOrderStatus();
     addressView.setAddress("近铁城市广场");
 
     List<String> keyWords = new ArrayList<>();
