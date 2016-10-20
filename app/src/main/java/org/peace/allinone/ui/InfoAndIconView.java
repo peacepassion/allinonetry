@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import java.util.Arrays;
 import org.peace.allinone.R;
 
 public class InfoAndIconView extends RelativeLayout {
@@ -36,5 +37,6 @@ public class InfoAndIconView extends RelativeLayout {
   public void showPromotion() {
     weatherInfoView.setVisibility(GONE);
     promotionInfoView.setVisibility(VISIBLE);
+    promotionInfoView.setTexts(Arrays.asList("one", "two", "three"));
   }
 }

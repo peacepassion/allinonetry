@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import me.ele.base.utils.CollectionsUtils;
 
-import static android.animation.ValueAnimator.RESTART;
 import static android.view.Gravity.CENTER_VERTICAL;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
