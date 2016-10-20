@@ -49,6 +49,8 @@ dependencies {
   compile 'io.reactivex:rxjava-math:1.0.0'
   compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
 
+  compile 'me.ele:EMRecylerView:0.0.10'
+
   apt "com.jakewharton:butterknife-compiler:8.3.0"
 
 }

@@ -18,11 +18,7 @@ allprojects {
   repositories {
     jcenter()
     maven {
-      url "${server}/nexus/content/groups/mobile"
-      credentials {
-        username nexusUsername
-        password nexusPassword
-      }
+      url "file:/Users/peacepassion/Desktop/maven_repo"
     }
     maven {
       url "https://jitpack.io"

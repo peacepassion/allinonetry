@@ -1,67 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#3190e8"
     android:orientation="vertical"
     tools:context=".ui.MainActivity"
     >
 
-  <LinearLayout
+  <me.ele.components.recyclerview.EMRecyclerView
+      android:id="@+id/rv"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp"
-      android:layout_marginRight="20dp"
-      android:layout_marginTop="50dp"
-      android:gravity="top"
-      android:orientation="horizontal"
-      >
-
-    <org.peace.allinone.ui.HelloView
-        android:id="@+id/hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        />
-
-    <android.support.v4.widget.Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
-
-    <org.peace.allinone.ui.EmotionView
-        android:id="@+id/emotion"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="right"
-        />
-
-  </LinearLayout>
-
-  <org.peace.allinone.ui.AddressView
-      android:id="@+id/address"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp"
-      />
-
-  <org.peace.allinone.ui.SearchView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="15dp"
-      android:layout_marginRight="15dp"
-      android:layout_marginTop="22dp"
-      />
-
-  <org.peace.allinone.ui.SearchKeyWordsView
-      android:id="@+id/search_key_words"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="14dp"
-      android:layout_marginLeft="20dp"
-      android:layout_marginRight="20dp"
-      android:layout_marginTop="10dp"
+      android:layout_height="match_parent"
+      app:main_layout="@layout/em_main"
       />
 
 </LinearLayout>
