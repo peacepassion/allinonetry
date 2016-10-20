@@ -11,10 +11,11 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="left|center_vertical"
+      android:includeFontPadding="false"
+      android:text="上午好，客官"
       android:textColor="@android:color/white"
       android:textSize="28sp"
       android:textStyle="bold"
-      android:text="上午好，客官"
       />
 
   <ImageView

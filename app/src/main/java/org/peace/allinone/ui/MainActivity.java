@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import java.util.ArrayList;
 import java.util.List;
 import org.peace.allinone.R;
@@ -17,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
   @BindView(R.id.search_key_words) protected SearchKeyWordsView searchKeyWordsView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    getWindow().getDecorView()
+        .setSystemUiVisibility(
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
@@ -31,9 +33,5 @@ public class MainActivity extends AppCompatActivity {
       keyWords.add("KFC");
     }
     searchKeyWordsView.setKeyWords(keyWords);
-  }
-
-  @OnClick(R.id.start_btn) public void onClick(View v) {
-
   }
 }
