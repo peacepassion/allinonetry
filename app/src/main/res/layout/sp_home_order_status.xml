@@ -16,16 +16,12 @@
       android:src="@drawable/home_icon_scene_knight"
       />
 
-  <TextView
+  <org.peace.allinone.ui.OrderStatusTextView
       android:id="@+id/text"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:layout_marginLeft="5dp"
       android:layout_weight="1"
-      android:maxLines="2"
-      android:text="等待商家接单"
-      android:textColor="@android:color/white"
-      android:textSize="10sp"
       />
 
   <ImageView

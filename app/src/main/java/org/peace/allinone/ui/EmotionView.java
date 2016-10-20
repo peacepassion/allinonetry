@@ -41,5 +41,6 @@ public class EmotionView extends FrameLayout {
   public void showOrderStatus() {
     infoAndIconView.setVisibility(GONE);
     orderStatusView.setVisibility(VISIBLE);
+    orderStatusView.setStatusTexts();
   }
 }

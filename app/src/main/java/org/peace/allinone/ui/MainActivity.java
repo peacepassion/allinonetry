@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     ButterKnife.bind(this);
 
-    emotionView.showOrderStatus();
   }
 
   @OnClick(R.id.start_btn) public void onClick(View v) {
 
+    emotionView.showOrderStatus();
   }
 }
