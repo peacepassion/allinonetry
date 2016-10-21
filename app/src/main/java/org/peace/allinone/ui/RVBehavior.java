@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 public class RVBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
 
@@ -25,8 +26,14 @@ public class RVBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
 
   @Override public boolean onDependentViewChanged(CoordinatorLayout parent, RecyclerView child,
       View dependency) {
-    Log.e(TAG, "onDependentViewChanged, dep h: " + dependency.getMeasuredHeight());
-    child.setY(dependency.getY() + dependency.getMeasuredHeight());
+    ToolbarBehavior behavior =
+        (ToolbarBehavior) ((CoordinatorLayout.LayoutParams) dependency.getLayoutParams()).getBehavior();
+    int minH = behavior.getMinH();
+    int bottomMargin = ((ViewGroup.MarginLayoutParams) dependency.getLayoutParams()).bottomMargin;
+    int y = (int) (dependency.getY() + dependency.getMeasuredHeight() + bottomMargin);
+    y = Math.max(minH, y);
+    Log.e(TAG, "onDependentViewChanged, Y: " + y);
+    child.setY(y);
     return true;
   }
 
